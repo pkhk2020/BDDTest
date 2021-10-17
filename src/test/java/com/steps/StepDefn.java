@@ -1,10 +1,11 @@
 package com.steps;
 
 import com.pages.TestScriptPage;
-import io.cucumber.java.en.And;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import java.util.List;
 
 /**
  * The type Step defn.
@@ -14,6 +15,7 @@ public class StepDefn{
      * The Test script page.
      */
     TestScriptPage testScriptPage = new TestScriptPage();
+    public static List<String> wishList;
 
     /**
      * Add different products to my wish list.
@@ -21,8 +23,9 @@ public class StepDefn{
      * @throws InterruptedException the interrupted exception
      */
     @Given("I add different products to my wish list")
-    public void i_add_different_products_to_my_wish_list() throws InterruptedException {
-        testScriptPage.addDifferentProductsToWishList();
+    public void i_add_different_products_to_my_wish_list(DataTable datatable) throws InterruptedException {
+        wishList=  datatable.asList();
+        testScriptPage.addDifferentProductsToWishList(wishList);
     }
 
     /**
@@ -40,7 +43,7 @@ public class StepDefn{
      */
     @Then("I find total four selected items in my wish list")
     public void i_find_total_four_selected_items_in_my_wish_list() {
-        testScriptPage.totalItemsInWishList();
+        testScriptPage.totalItemsInWishList(wishList);
     }
 
     /**
@@ -70,22 +73,4 @@ public class StepDefn{
         testScriptPage.verifyItemIntheCart();
     }
 
-    /**
-     * Invoke the url.
-     * @author: Hari
-     * @throws InterruptedException the interrupted exception
-     */
-    @Given("I Invoke the url")
-    public void iInvokeTheUrl() throws InterruptedException {
-        testScriptPage.invokeUrl();
-    }
-
-    /**
-     * Close the browser.
-     * @author: Hari
-     */
-    @And("I Close the browser")
-    public void iCloseTheBrowser() {
-        testScriptPage.quitDriver();
-    }
 }
