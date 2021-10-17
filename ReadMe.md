@@ -53,9 +53,6 @@ git branch -M main
 git remote add origin https://github.com/pkhk2020/BDDTest.git
 git push -u origin main
 ````
-<<<<<<< HEAD
-=======
 Report (Screenshot)
 ----------------------
 ![Report](https://user-images.githubusercontent.com/54612564/129357683-80fe1186-0bb6-451d-9698-6a386fc868e2.jpg)
->>>>>>> a7c390da41bee3d01bcb761823e32bf45111e737
